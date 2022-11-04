@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="header">
+      <h1>Mini shop</h1>
+    </div>
+
+<aside>
+    <p>Сортировка
+    <a href="{% url 'catalog:sort'%}">| по убыванию цены </a>
+    <a href="{% url 'catalog:index'%}">| по возрастанию цены</a></p></aside>
+
+    <div class="content">
+    {% for product in products %}
+        <div class="phone">
+        <h4>{{ product.name }}</h4>
+        {% thumbnail product.image "250x250" crop="center" upscale=True as im %}
+            <img src="{{ im.url }}">
+        {% endthumbnail %}
+        <p>Цена: {{ product.price }}</p>
+            {% include 'cart/add_to_cart.html' %}
+            <a href="{% url 'catalog:product_detail' product.pk %}">подробная информация</a>
+        </div>
+      {% endfor %}
+        {% include 'includes/paginator.html' %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Mini shop{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+<header>
+    {% include 'includes/header.html' %}
+</header>
+{% block content %}{% endblock %}
+<footer class="border-top text-center py-3">
+    {% include 'includes/footer.html' %}
+</footer>
+
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>

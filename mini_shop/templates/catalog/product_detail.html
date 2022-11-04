@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}  {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row centered mt mb">
+        <div class="col-lg-8 col-lg-offset-2">
+
+            <div class="phone">
+                <h4>{{ product.name }}</h4>
+                {% thumbnail product.image "250x250" crop="center" upscale=True as im %}
+                <img src="{{ im.url }}">
+                {% endthumbnail %}
+                <p>Цена: {{ product.price }}</p>
+                <p>Описание: {{ product.text }}</p>
+                <p>Дата изготовления: {{ product.pub_date|date:"d E Y" }}</p>
+            </div>
+
+
+            {% for comment in comments %}
+            <h4>Отзывы:</h4>
+            <div class="media mb-4">
+                <div class="media-body">
+                    <h5 class="mt-0">
+                        {{ comment.author.username }}
+                    </h5>
+                    <p>
+                        Отзыв: {{ comment.text }}
+                    </p>
+                    <p>
+                    <hr>
+                    {% for comment in product.comments.get_queryset%}
+                    <p>Рейтинг: {{ comment.rating}}</p>
+                    {% endfor %}
+                    <hr>
+                    </p>
+                    {{ comment.pub_date|date:"d E Y" }}
+                </div>
+            </div>
+            {% endfor %}
+
+            {% if user.is_authenticated %}
+            <div class="card my-4">
+                <h5 class="card-header">Оставьте отзыв:</h5>
+                <div class="card-body">
+                    <form method="post" action="{% url 'catalog:add_comment' product.id %}">
+                        {% csrf_token %}
+                        <div class="form-group mb-2">
+                            {{ form.text }}
+                        </div>
+                        {% for raiting in form.rating %}
+                        {{ raiting }}
+                        {% endfor %}
+                        <div>
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

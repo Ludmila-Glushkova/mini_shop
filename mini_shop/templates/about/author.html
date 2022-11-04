@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock %}
+
+{% block content%}
+
+
+<div class="container">
+    <div class="row centered mt mb">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h2>О магазине</h2>
+            <p>Изготавливаем мыло, шампуни и тд</p>
+        </div>
+        <div id="aboutwrap">
+            <div class="container">
+                <figure>
+                    <img src="{% static 'img/1.jpg' %}" width="400" height="400" alt="Альтернативный текст">
+                    <figcaption>Лучшее мыло</figcaption>
+                </figure>
+                <p></p>
+                <figure>
+
+                    <img src="{% static 'img/2.jpg' %}" width="400" height="350" alt="Альтернативный текст">
+                    <figcaption>Тоже мыло</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row centered mt mb">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h3>Информация о производителе</h3>
+                    <p>Красивый и трогательный рассказ.</p>
+                    <p>тут еще какой-то текст
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
