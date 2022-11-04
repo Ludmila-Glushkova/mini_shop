@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = '3sn8w#1@#!dj@y)o5+)ji)bd5eaj&wyvlyt=gye!2h4#d!%$e9'
+SECRET_KEY = 'ABC1' #change me
 
 
 # Quick-start development settings - unsuitable for production
